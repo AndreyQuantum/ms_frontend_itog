@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { IconChat, IconEdit, IconTrash } from '../../assets/icons';
+import { ConfirmModal } from '../ui/ConfirmModal';
 import styles from './sidebar.module.css';
 
 interface ChatItemProps {
@@ -48,63 +49,68 @@ export function ChatItem({
     }
   };
 
-  const handleDelete = () => {
-    if (showConfirm) {
-      onDelete();
-      setShowConfirm(false);
-    } else {
-      setShowConfirm(true);
-      setTimeout(() => setShowConfirm(false), 3000);
-    }
-  };
-
   return (
-    <div
-      className={`${styles.chatItem} ${isActive ? styles.chatItemActive : ''}`}
-      onClick={!isEditing ? onSelect : undefined}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' && !isEditing) onSelect();
-      }}
-    >
-      <IconChat className={styles.chatItemIcon} />
+    <>
+      <div
+        className={`${styles.chatItem} ${isActive ? styles.chatItemActive : ''}`}
+        onClick={!isEditing ? onSelect : undefined}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !isEditing) onSelect();
+        }}
+      >
+        <IconChat className={styles.chatItemIcon} />
 
-      {isEditing ? (
-        <input
-          ref={inputRef}
-          className={styles.chatItemEditInput}
-          value={editValue}
-          onChange={(e) => setEditValue(e.target.value)}
-          onBlur={handleSave}
-          onKeyDown={handleKeyDown}
-          onClick={(e) => e.stopPropagation()}
-        />
-      ) : (
-        <span className={styles.chatItemTitle}>{title}</span>
-      )}
+        {isEditing ? (
+          <input
+            ref={inputRef}
+            className={styles.chatItemEditInput}
+            value={editValue}
+            onChange={(e) => setEditValue(e.target.value)}
+            onBlur={handleSave}
+            onKeyDown={handleKeyDown}
+            onClick={(e) => e.stopPropagation()}
+          />
+        ) : (
+          <span className={styles.chatItemTitle}>{title}</span>
+        )}
 
-      <div className={styles.chatItemActions} onClick={(e) => e.stopPropagation()}>
-        <button
-          className={styles.chatItemAction}
-          onClick={() => {
-            setEditValue(title);
-            setIsEditing(true);
-          }}
-          aria-label="Переименовать"
-          title="Переименовать"
-        >
-          <IconEdit />
-        </button>
-        <button
-          className={`${styles.chatItemAction} ${showConfirm ? styles.chatItemActionDanger : ''}`}
-          onClick={handleDelete}
-          aria-label={showConfirm ? 'Подтвердить удаление' : 'Удалить'}
-          title={showConfirm ? 'Нажмите ещё раз для подтверждения' : 'Удалить'}
-        >
-          <IconTrash />
-        </button>
+        <div className={styles.chatItemActions} onClick={(e) => e.stopPropagation()}>
+          <button
+            className={styles.chatItemAction}
+            onClick={() => {
+              setEditValue(title);
+              setIsEditing(true);
+            }}
+            aria-label="Переименовать"
+            title="Переименовать"
+          >
+            <IconEdit />
+          </button>
+          <button
+            className={styles.chatItemAction}
+            onClick={() => setShowConfirm(true)}
+            aria-label="Удалить чат"
+            title="Удалить"
+          >
+            <IconTrash />
+          </button>
+        </div>
       </div>
-    </div>
+
+      {showConfirm && (
+        <ConfirmModal
+          title="Удалить чат?"
+          message={`Вы уверены, что хотите удалить чат «${title}»? Это действие нельзя отменить.`}
+          confirmText="Удалить"
+          onConfirm={() => {
+            setShowConfirm(false);
+            onDelete();
+          }}
+          onCancel={() => setShowConfirm(false)}
+        />
+      )}
+    </>
   );
 }
