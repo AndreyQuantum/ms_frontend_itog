@@ -1,0 +1,97 @@
+:root {
+  --color-bg-primary: #0d0d0d;
+  --color-bg-secondary: #171717;
+  --color-bg-sidebar: #141414;
+  --color-bg-hover: #1e1e1e;
+  --color-bg-active: #2a2a2a;
+  --color-bg-input: #1e1e1e;
+  --color-bg-message-user: #2b2b3d;
+  --color-bg-message-assistant: transparent;
+  --color-bg-code: #1a1a2e;
+  --color-bg-modal-overlay: rgba(0, 0, 0, 0.7);
+  --color-bg-modal: #1a1a1a;
+
+  --color-text-primary: #ececf1;
+  --color-text-secondary: #9a9aab;
+  --color-text-muted: #6b6b7b;
+  --color-text-inverse: #0d0d0d;
+  --color-text-accent: #a78bfa;
+  --color-text-code: #e2e8f0;
+
+  --color-accent-primary: #8b5cf6;
+  --color-accent-secondary: #6d28d9;
+  --color-accent-hover: #a78bfa;
+  --color-accent-glow: rgba(139, 92, 246, 0.3);
+
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  --color-border: #2a2a2a;
+  --color-border-subtle: #1f1f1f;
+  --color-border-focus: #8b5cf6;
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 0.9375rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.3;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 0px;
+  --input-max-height: 200px;
+  --header-height: 52px;
+  --chat-max-width: 768px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px var(--color-accent-glow);
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --z-sidebar: 100;
+  --z-modal-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+
+  --scrollbar-width: 6px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #3a3a3a;
+  --scrollbar-thumb-hover: #555;
+}
