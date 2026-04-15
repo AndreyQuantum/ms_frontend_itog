@@ -59,7 +59,7 @@ export function InputArea({ onSend, onStop, isStreaming, isLoading, disabled }: 
           id="chat-input"
         />
 
-        {isStreaming ? (
+        {(isStreaming || isLoading) ? (
           <button
             className={styles.stopButton}
             onClick={onStop}

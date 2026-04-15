@@ -62,27 +62,29 @@ export function useChat() {
         renameChat(chatId, generateTitle(content));
       }
 
-      const assistantMessage: Message = {
-        id: generateId(),
-        role: 'assistant',
-        content: '',
-        timestamp: Date.now(),
-      };
-      addMessage(chatId, assistantMessage);
-
       setIsLoading(true);
-      setIsStreaming(true);
+      setIsStreaming(false);
       setStreamingContent('');
 
       const allMessages = useChatStore
         .getState()
         .chats.find((c) => c.id === chatId)!
-        .messages.slice(0, -1);
+        .messages;
 
       await startStream(
         allMessages,
         settings,
         (accumulated) => {
+          if (!useChatStore.getState().isStreaming) {
+            setIsStreaming(true);
+            const initialAssistantMessage: Message = {
+              id: generateId(),
+              role: 'assistant',
+              content: '',
+              timestamp: Date.now(),
+            };
+            addMessage(chatId!, initialAssistantMessage);
+          }
           setStreamingContent(accumulated);
           updateLastAssistantMessage(chatId!, accumulated);
         },

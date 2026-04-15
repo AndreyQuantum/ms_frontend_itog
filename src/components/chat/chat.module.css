@@ -346,16 +346,25 @@
   border-radius: var(--radius-lg);
 }
 
+@keyframes typingWave {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-5px);
+  }
+}
+
 .typingDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--color-text-muted);
-  animation: bounce 1.4s infinite ease-in-out both;
+  animation: typingWave 1.2s infinite ease-in-out;
 }
 .typingDot:nth-child(1) { animation-delay: 0s; }
-.typingDot:nth-child(2) { animation-delay: 0.16s; }
-.typingDot:nth-child(3) { animation-delay: 0.32s; }
+.typingDot:nth-child(2) { animation-delay: 0.2s; }
+.typingDot:nth-child(3) { animation-delay: 0.4s; }
 
 .inputArea {
   flex-shrink: 0;
