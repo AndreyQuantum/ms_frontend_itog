@@ -28,17 +28,11 @@ export function MessageList({ messages, isLoading, isStreaming, onSuggestionClic
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
             <path
               d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-              stroke="url(#empty-grad)"
+              stroke="#8b5cf6"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            <defs>
-              <linearGradient id="empty-grad" x1="2" y1="2" x2="22" y2="22">
-                <stop stopColor="#667eea" />
-                <stop offset="1" stopColor="#764ba2" />
-              </linearGradient>
-            </defs>
           </svg>
         </div>
         <h2 className={styles.emptyTitle}>Чем могу помочь?</h2>
@@ -74,4 +68,3 @@ export function MessageList({ messages, isLoading, isStreaming, onSuggestionClic
     </div>
   );
 }
-

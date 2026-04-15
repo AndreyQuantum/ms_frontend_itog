@@ -32,7 +32,6 @@ export interface GeminiResponse {
   candidates: GeminiCandidate[];
 }
 
-/** Single SSE chunk from streamGenerateContent */
 export interface GeminiStreamChunk {
   candidates?: GeminiCandidate[];
   error?: { code: number; message: string };

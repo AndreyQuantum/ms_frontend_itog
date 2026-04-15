@@ -1,9 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
 
-/**
- * Auto-scroll to the bottom of a container when content changes.
- * Pauses auto-scroll when user manually scrolls up.
- */
 export function useAutoScroll(deps: unknown[]) {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldAutoScroll = useRef(true);
@@ -24,7 +20,6 @@ export function useAutoScroll(deps: unknown[]) {
         behavior: 'smooth',
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   const scrollToBottom = useCallback(() => {

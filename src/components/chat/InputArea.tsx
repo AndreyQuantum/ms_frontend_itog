@@ -29,7 +29,6 @@ export function InputArea({ onSend, onStop, isStreaming, isLoading, disabled }: 
     if (!trimmed || isStreaming || isLoading) return;
     onSend(trimmed);
     setValue('');
-    // Reset height after send
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
     }

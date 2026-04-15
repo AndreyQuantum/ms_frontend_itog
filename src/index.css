@@ -2,7 +2,6 @@
 @import './styles/theme.css';
 @import 'highlight.js/styles/github-dark.min.css';
 
-/* ── Reset ── */
 *,
 *::before,
 *::after {
@@ -35,7 +34,6 @@ body {
   width: 100%;
 }
 
-/* ── Links ── */
 a {
   color: var(--color-accent-hover);
   text-decoration: none;
@@ -46,20 +44,17 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ── Focus ── */
 :focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
 
-/* ── Selection ── */
 ::selection {
   background: var(--color-accent-primary);
   color: var(--color-text-primary);
 }
 
-/* ── Scrollbar ── */
 ::-webkit-scrollbar {
   width: var(--scrollbar-width);
 }
@@ -74,13 +69,11 @@ a:hover {
   background: var(--scrollbar-thumb-hover);
 }
 
-/* Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-/* ── Utility Animations ── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -116,7 +109,6 @@ a:hover {
   100% { background-position: 200% 0; }
 }
 
-/* ── Button Reset ── */
 button {
   font-family: inherit;
   font-size: inherit;
@@ -130,7 +122,6 @@ button:disabled {
   opacity: 0.5;
 }
 
-/* ── Input Reset ── */
 input, textarea, select {
   font-family: inherit;
   font-size: inherit;
@@ -144,12 +135,10 @@ textarea {
   resize: none;
 }
 
-/* ── List Reset ── */
 ul, ol {
   list-style: none;
 }
 
-/* ── Image Reset ── */
 img, svg {
   display: block;
   max-width: 100%;

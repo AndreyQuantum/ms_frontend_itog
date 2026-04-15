@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════
-   Settings Panel
-   ═══════════════════════════════════════ */
-
 .overlay {
   position: fixed;
   inset: 0;
@@ -25,8 +21,6 @@
   flex-direction: column;
   animation: fadeInScale 0.3s ease;
   box-shadow: var(--shadow-lg);
-
-  /* Glassmorphism */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }

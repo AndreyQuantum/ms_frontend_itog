@@ -10,10 +10,8 @@ interface ChatState {
   streamingContent: string;
   error: string | null;
 
-  // Computed
   activeChat: () => Chat | undefined;
 
-  // Actions
   createChat: () => string;
   deleteChat: (id: string) => void;
   renameChat: (id: string, title: string) => void;

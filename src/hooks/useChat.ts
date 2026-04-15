@@ -57,7 +57,6 @@ export function useChat() {
 
       addMessage(chatId, userMessage);
 
-      // Auto-title on first message
       const chat = useChatStore.getState().chats.find((c) => c.id === chatId);
       if (chat && chat.messages.length === 1 && chat.title === 'Новый чат') {
         renameChat(chatId, generateTitle(content));
@@ -78,7 +77,7 @@ export function useChat() {
       const allMessages = useChatStore
         .getState()
         .chats.find((c) => c.id === chatId)!
-        .messages.slice(0, -1); // exclude empty assistant placeholder
+        .messages.slice(0, -1);
 
       await startStream(
         allMessages,

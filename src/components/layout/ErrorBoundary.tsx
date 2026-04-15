@@ -44,7 +44,7 @@ export class ErrorBoundary extends Component<Props, State> {
             onClick={() => window.location.reload()}
             style={{
               padding: '0.5rem 1.5rem',
-              background: 'linear-gradient(135deg, #667eea, #764ba2)',
+              background: '#8b5cf6',
               color: '#fff',
               border: 'none',
               borderRadius: '10px',

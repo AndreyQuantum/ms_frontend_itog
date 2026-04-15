@@ -1,9 +1,4 @@
-/* ═══════════════════════════════════════════════════════
-   Design Tokens — Dark ChatGPT-inspired theme
-   ═══════════════════════════════════════════════════════ */
-
 :root {
-  /* ── Surface colors ── */
   --color-bg-primary: #0d0d0d;
   --color-bg-secondary: #171717;
   --color-bg-sidebar: #141414;
@@ -16,7 +11,6 @@
   --color-bg-modal-overlay: rgba(0, 0, 0, 0.7);
   --color-bg-modal: #1a1a1a;
 
-  /* ── Text colors ── */
   --color-text-primary: #ececf1;
   --color-text-secondary: #9a9aab;
   --color-text-muted: #6b6b7b;
@@ -24,25 +18,20 @@
   --color-text-accent: #a78bfa;
   --color-text-code: #e2e8f0;
 
-  /* ── Accent / Brand ── */
   --color-accent-primary: #8b5cf6;
   --color-accent-secondary: #6d28d9;
-  --color-accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --color-accent-glow: rgba(139, 92, 246, 0.3);
   --color-accent-hover: #a78bfa;
+  --color-accent-glow: rgba(139, 92, 246, 0.3);
 
-  /* ── Semantic ── */
   --color-success: #22c55e;
   --color-error: #ef4444;
   --color-warning: #f59e0b;
   --color-info: #3b82f6;
 
-  /* ── Borders ── */
   --color-border: #2a2a2a;
   --color-border-subtle: #1f1f1f;
   --color-border-focus: #8b5cf6;
 
-  /* ── Typography ── */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
@@ -63,7 +52,6 @@
   --line-height-normal: 1.6;
   --line-height-relaxed: 1.8;
 
-  /* ── Spacing ── */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -75,39 +63,33 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
-  /* ── Layout ── */
   --sidebar-width: 280px;
   --sidebar-width-collapsed: 0px;
   --input-max-height: 200px;
   --header-height: 52px;
   --chat-max-width: 768px;
 
-  /* ── Radius ── */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* ── Shadows ── */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 20px var(--color-accent-glow);
 
-  /* ── Transitions ── */
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
   --transition-slow: 400ms ease;
   --transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* ── Z-index ── */
   --z-sidebar: 100;
   --z-modal-overlay: 200;
   --z-modal: 300;
   --z-toast: 400;
 
-  /* ── Scrollbar ── */
   --scrollbar-width: 6px;
   --scrollbar-track: transparent;
   --scrollbar-thumb: #3a3a3a;

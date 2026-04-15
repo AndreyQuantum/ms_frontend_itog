@@ -20,7 +20,7 @@ function buildContents(messages: Message[]): GeminiContent[] {
     }));
 }
 
-function buildRequest(messages: Message[], settings: ModelSettings): GeminiRequest {
+export function buildRequest(messages: Message[], settings: ModelSettings): GeminiRequest {
   const request: GeminiRequest = {
     contents: buildContents(messages),
     generationConfig: {
@@ -51,10 +51,6 @@ export class GeminiApiError extends Error {
   }
 }
 
-/**
- * Stream response from Gemini API token-by-token.
- * Yields accumulated text on each SSE chunk.
- */
 export async function* streamMessage(
   messages: Message[],
   settings: ModelSettings,
@@ -95,7 +91,6 @@ export async function* streamMessage(
       buffer += decoder.decode(value, { stream: true });
 
       const lines = buffer.split('\n');
-      // Keep incomplete last line in buffer
       buffer = lines.pop() ?? '';
 
       for (const line of lines) {
@@ -122,7 +117,6 @@ export async function* streamMessage(
           }
         } catch (e) {
           if (e instanceof GeminiApiError) throw e;
-          // Skip malformed JSON chunks silently
         }
       }
     }
@@ -131,7 +125,6 @@ export async function* streamMessage(
   }
 }
 
-/** Non-streaming single-shot call (used for chat title generation). */
 export async function sendMessage(
   messages: Message[],
   settings: ModelSettings,
