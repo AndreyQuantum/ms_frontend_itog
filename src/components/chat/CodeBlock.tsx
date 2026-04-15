@@ -1,16 +1,28 @@
-import { useState, type ReactNode } from 'react';
+import { useState, useMemo } from 'react';
+import hljs from 'highlight.js';
 import styles from './chat.module.css';
 
 interface CodeBlockProps {
   language: string;
-  children: ReactNode;
+  children: string;
 }
 
 export function CodeBlock({ language, children }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
+  const highlighted = useMemo(() => {
+    try {
+      if (hljs.getLanguage(language)) {
+        return hljs.highlight(children, { language }).value;
+      }
+      return hljs.highlightAuto(children).value;
+    } catch {
+      return children;
+    }
+  }, [children, language]);
+
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(String(children));
+    await navigator.clipboard.writeText(children);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -39,7 +51,10 @@ export function CodeBlock({ language, children }: CodeBlockProps) {
         </button>
       </div>
       <pre className={styles.codeBlockPre}>
-        <code className={`language-${language}`}>{children}</code>
+        <code
+          className={`hljs language-${language}`}
+          dangerouslySetInnerHTML={{ __html: highlighted }}
+        />
       </pre>
     </div>
   );

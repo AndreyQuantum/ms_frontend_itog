@@ -1,7 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight';
 
 import type { Message as MessageType } from '../../types';
 import { CodeBlock } from './CodeBlock';
@@ -45,7 +44,7 @@ export function Message({ message }: MessageProps) {
           ) : (
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeHighlight]}
+
               components={{
                 code: (props: ComponentPropsWithoutRef<'code'>) => {
                   const { children, className, ...rest } = props;

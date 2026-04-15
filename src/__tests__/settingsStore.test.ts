@@ -13,7 +13,7 @@ describe('settingsStore', () => {
   it('has correct default settings', () => {
     const { settings } = useSettingsStore.getState();
 
-    expect(settings.model).toBe('gemini-2.0-flash');
+    expect(settings.model).toBe('gemini-3-flash-preview');
     expect(settings.temperature).toBe(0.7);
     expect(settings.topP).toBe(0.95);
     expect(settings.topK).toBe(40);
@@ -26,7 +26,7 @@ describe('settingsStore', () => {
 
     const { settings } = useSettingsStore.getState();
     expect(settings.temperature).toBe(1.5);
-    expect(settings.model).toBe('gemini-2.0-flash');
+    expect(settings.model).toBe('gemini-3-flash-preview');
   });
 
   it('updates multiple settings at once', () => {

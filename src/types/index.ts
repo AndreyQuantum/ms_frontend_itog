@@ -23,7 +23,7 @@ export interface ModelSettings {
 }
 
 export const DEFAULT_SETTINGS: ModelSettings = {
-  model: 'gemini-2.0-flash',
+  model: 'gemini-3-flash-preview',
   temperature: 0.7,
   topP: 0.95,
   topK: 40,
@@ -32,8 +32,6 @@ export const DEFAULT_SETTINGS: ModelSettings = {
 };
 
 export const AVAILABLE_MODELS = [
-  'gemini-2.0-flash',
-  'gemini-2.0-flash-lite',
-  'gemini-1.5-flash',
-  'gemini-1.5-pro',
+  'gemini-3-flash-preview',
+  'gemini-3.1-flash-lite-preview',
 ] as const;

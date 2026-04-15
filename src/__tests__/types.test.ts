@@ -5,7 +5,7 @@ import { DEFAULT_SETTINGS, AVAILABLE_MODELS } from '../types';
 describe('types', () => {
   it('DEFAULT_SETTINGS has expected shape', () => {
     expect(DEFAULT_SETTINGS).toEqual({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3-flash-preview',
       temperature: 0.7,
       topP: 0.95,
       topK: 40,
