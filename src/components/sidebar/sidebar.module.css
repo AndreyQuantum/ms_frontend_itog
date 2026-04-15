@@ -39,9 +39,11 @@
     width: var(--sidebar-width);
     transform: translateX(-100%);
   }
+
   .sidebarHidden {
     width: var(--sidebar-width);
   }
+
   .sidebarOpen {
     transform: translateX(0);
   }
@@ -76,6 +78,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .closeSidebar:hover {
   color: var(--color-text-primary);
   background: var(--color-bg-hover);
@@ -99,7 +102,7 @@
 .searchIcon {
   position: absolute;
   left: calc(var(--space-4) + var(--space-3));
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   color: var(--color-text-muted);
   pointer-events: none;
@@ -115,9 +118,11 @@
   color: var(--color-text-primary);
   transition: border-color var(--transition-fast);
 }
+
 .searchInput::placeholder {
   color: var(--color-text-muted);
 }
+
 .searchInput:focus {
   border-color: var(--color-border-focus);
 }
@@ -125,7 +130,7 @@
 .searchClear {
   position: absolute;
   right: calc(var(--space-4) + var(--space-2));
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
@@ -133,6 +138,7 @@
   border-radius: var(--radius-sm);
   transition: color var(--transition-fast);
 }
+
 .searchClear:hover {
   color: var(--color-text-primary);
 }
@@ -180,6 +186,7 @@
 .chatItemActive {
   background: var(--color-bg-active);
 }
+
 .chatItemActive:hover {
   background: var(--color-bg-active);
 }
@@ -215,6 +222,7 @@
   transition: opacity var(--transition-fast);
   flex-shrink: 0;
 }
+
 .chatItem:hover .chatItemActions {
   opacity: 1;
 }
@@ -228,10 +236,12 @@
   color: var(--color-text-muted);
   transition: all var(--transition-fast);
 }
+
 .chatItemAction:hover {
   color: var(--color-text-primary);
   background: var(--color-bg-hover);
 }
+
 .chatItemActionDanger {
   color: var(--color-error) !important;
 }
@@ -253,6 +263,7 @@
   font-size: var(--font-size-sm);
   transition: all var(--transition-fast);
 }
+
 .settingsButton:hover {
   background: var(--color-bg-hover);
   color: var(--color-text-primary);
