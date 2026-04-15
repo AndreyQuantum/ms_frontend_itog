@@ -1,75 +1,75 @@
-# React + TypeScript + Vite
+# AI Chat Client (ms_frontend_itog)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современный и отзывчивый интерфейс для общения с нейросетями (Google Gemini) в режиме реального времени. Проект написан на React с использованием TypeScript, Vite и глобального хранилища Zustand.
 
-Currently, two official plugins are available:
+## 🚀 Особенности и функционал
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Потоковая передача (Streaming)**: Поддержка стриминга для получения ответов от нейросети в реальном времени, что избавляет от долгого ожидания длинных ответов.
+- **Подсветка кода (Markdown)**: Автоматический парсинг Markdown с подсветкой синтаксиса для блоков кода при помощи `react-markdown`.
+- **Сохранение истории**: Чаты сохраняются в `localStorage`, поэтому вы можете закрывать вкладку и возвращаться к истории ваших диалогов.
+- **Современный UI**: Плавные анимации, индикация "набора текста" (мягкая волна), удобная навигация и отзывчивый дизайн (Sidebar скрывается на мобильных устройствах).
+- **Управление генерацией**: Возможность принудительно остановить генерацию ответа от AI в любой момент.
 
-## React Compiler
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🛠️ Стек технологий
 
-Note: This will impact Vite dev & build performances.
+- **Фреймворк**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Сборщик**: [Vite](https://vitejs.dev/) (с плагином React Compiler)
+- **Стейт-менеджер**: [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) (управление чатами и настройками)
+- **Стилизация**: CSS Modules (scoped styles)
+- **Иконки**: Свой набор SVG компонентов
+- **Markdown**: `react-markdown` + `remark-gfm`
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ Инструкция по запуску локально
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. Предварительные требования
+Для работы проекта вам потребуется:
+- Установленный **Node.js** (версия 18.0 или выше)
+- Пакетный менеджер **npm** (идет в комплекте с Node.js)
+- Ключ разработчика для доступа к **Google Gemini API** (можно получить в [Google AI Studio](https://aistudio.google.com/)).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Установка зависимостей
+Склонируйте репозиторий и перейдите в папку с проектом. Откройте терминал и выполните команду:
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Настройка переменных окружения (API Ключ)
+Чтобы запросы к Gemini работали, необходимо указать ваш API ключ.
+1. Создайте в корне проекта файл с названием `.env` (если его нет).
+2. Добавьте в него следующую строку со своим настоящим ключом:
+```env
+VITE_GEMINI_API_KEY=твой_секретный_ключ_от_gemini
 ```
+*Внимание: `VITE_GEMINI_API_KEY` используется внутри локального прокси Vite для безопасных запросов.*
+
+### 4. Запуск сервера разработки
+После успешной установки и настройки ключа выполните:
+```bash
+npm run dev
+```
+Проект будет доступен в браузере по адресу: [http://localhost:5173/](http://localhost:5173/) (обратите внимание, порт может отличаться, если 5173 занят. Точный адрес будет выведен в терминале).
+
+---
+
+## 💡 Примеры работы
+
+### Сценарий 1: Создание нового общения
+1. Откройте проект в браузере.
+2. В левой панели (Sidebar) нажмите кнопку `+ Новый чат`.
+3. В нижнем поле ввода напишите, например: `"Напиши функцию на Python для поиска кратчайшего пути в графе"`.
+4. Нажмите синюю кнопку со стрелкой (или клавишу `Enter`).
+5. Вы увидите уникальную анимацию загрузки, после чего нейросеть в реальном времени начнет печатать ответ с подсвеченными блоками кода.
+
+### Сценарий 2: Остановка генерации
+Если нейросеть начала отвечать слишком подробно, вы хотите ее прервать:
+1. Во время печатания текста нажмите на **красный квадрат** (кнопку Стоп), появившуюся на месте кнопки отправки.
+2. Генерация немедленно прекратится, а сохраненным останется только напечатанный до этого момента текст.
+
+### Сценарий 3: Возвращение к старым вопросам
+1. Обновите страницу в браузере (F5).
+2. Обратите внимание, что история отправленных вопросов не исчезла — она загружена из кэша.
+3. В левой колонке выберите интересующий вас предыдущий чат, чтобы посмотреть историю того диалога, либо введите его название в строку поиска `Поиск чатов...`.
