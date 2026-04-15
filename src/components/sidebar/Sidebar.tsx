@@ -8,11 +8,11 @@ import { Button } from '../ui/Button';
 import styles from './sidebar.module.css';
 
 interface SidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isVisible: boolean;
+  onToggle: () => void;
 }
 
-export function Sidebar({ isOpen, onClose }: SidebarProps) {
+export function Sidebar({ isVisible, onToggle }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const chats = useChatStore((s) => s.chats);
@@ -30,18 +30,21 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   const handleNewChat = () => {
     createChat();
-    onClose();
   };
 
   const handleSelect = (id: string) => {
     switchChat(id);
-    onClose();
   };
+
+  const sidebarClasses = [
+    styles.sidebar,
+    isVisible ? styles.sidebarOpen : styles.sidebarHidden,
+  ].join(' ');
 
   return (
     <>
-      {isOpen && <div className={styles.overlay} onClick={onClose} />}
-      <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ''}`}>
+      {isVisible && <div className={styles.overlay} onClick={onToggle} />}
+      <aside className={sidebarClasses}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -58,8 +61,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
           <button
             className={styles.closeSidebar}
-            onClick={onClose}
-            aria-label="Закрыть боковую панель"
+            onClick={onToggle}
+            aria-label="Свернуть боковую панель"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />

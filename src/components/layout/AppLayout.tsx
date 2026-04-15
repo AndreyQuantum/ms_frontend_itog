@@ -5,12 +5,18 @@ import { SettingsPanel } from '../settings/SettingsPanel';
 import styles from './layout.module.css';
 
 export function AppLayout() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(true);
 
   return (
     <div className={styles.layout}>
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <ChatWindow onOpenSidebar={() => setSidebarOpen(true)} />
+      <Sidebar
+        isVisible={sidebarVisible}
+        onToggle={() => setSidebarVisible((v) => !v)}
+      />
+      <ChatWindow
+        sidebarVisible={sidebarVisible}
+        onOpenSidebar={() => setSidebarVisible(true)}
+      />
       <SettingsPanel />
     </div>
   );

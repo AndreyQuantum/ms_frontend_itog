@@ -5,10 +5,11 @@ import { ErrorMessage } from '../ui/ErrorMessage';
 import styles from './chat.module.css';
 
 interface ChatWindowProps {
+  sidebarVisible: boolean;
   onOpenSidebar: () => void;
 }
 
-export function ChatWindow({ onOpenSidebar }: ChatWindowProps) {
+export function ChatWindow({ sidebarVisible, onOpenSidebar }: ChatWindowProps) {
   const {
     activeChat,
     isStreaming,
@@ -22,17 +23,19 @@ export function ChatWindow({ onOpenSidebar }: ChatWindowProps) {
   return (
     <div className={styles.chatWindow}>
       <header className={styles.chatHeader}>
-        <button
-          className={styles.menuButton}
-          onClick={onOpenSidebar}
-          aria-label="Открыть меню"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
-        </button>
+        {!sidebarVisible && (
+          <button
+            className={styles.menuButton}
+            onClick={onOpenSidebar}
+            aria-label="Открыть меню"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        )}
         <h1 className={styles.chatTitle}>
           {activeChat?.title ?? 'Новый чат'}
         </h1>

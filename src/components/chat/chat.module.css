@@ -17,7 +17,7 @@
 }
 
 .menuButton {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-2);
@@ -29,12 +29,6 @@
 .menuButton:hover {
   background: var(--color-bg-hover);
   color: var(--color-text-primary);
-}
-
-@media (max-width: 768px) {
-  .menuButton {
-    display: flex;
-  }
 }
 
 .chatTitle {
