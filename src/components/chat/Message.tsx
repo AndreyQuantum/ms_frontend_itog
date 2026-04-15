@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 import type { Message as MessageType } from '../../types';
+import { IconUser, IconRobot, IconCopy } from '../../assets/icons';
 import { CodeBlock } from './CodeBlock';
 import styles from './chat.module.css';
 
@@ -18,22 +19,7 @@ export function Message({ message }: MessageProps) {
       className={`${styles.message} ${isUser ? styles.messageUser : styles.messageAssistant}`}
     >
       <div className={styles.messageAvatar}>
-        {isUser ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-              stroke="#8b5cf6"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        )}
+        {isUser ? <IconUser /> : <IconRobot />}
       </div>
 
       <div className={styles.messageContent}>
@@ -44,7 +30,6 @@ export function Message({ message }: MessageProps) {
           ) : (
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-
               components={{
                 code: (props: ComponentPropsWithoutRef<'code'>) => {
                   const { children, className, ...rest } = props;
@@ -95,10 +80,7 @@ export function Message({ message }: MessageProps) {
               title="Копировать"
               aria-label="Копировать ответ"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-              </svg>
+              <IconCopy />
               <span>Копировать</span>
             </button>
           </div>

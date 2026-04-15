@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { IconLogo } from '../../assets/icons';
 import styles from './auth.module.css';
 
 interface AuthFormProps {
@@ -19,15 +20,7 @@ export function AuthForm({ onSubmit }: AuthFormProps) {
     <div className={styles.authOverlay}>
       <form className={styles.authForm} onSubmit={handleSubmit}>
         <div className={styles.authIcon}>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-              stroke="#8b5cf6"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <IconLogo width={40} height={40} />
         </div>
         <h2 className={styles.authTitle}>Введите API ключ</h2>
         <p className={styles.authDescription}>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSettingsStore } from '../../store/settingsStore';
+import { IconClose } from '../../assets/icons';
 import { Slider } from '../ui/Slider';
 import { Button } from '../ui/Button';
 import { AVAILABLE_MODELS } from '../../types';
@@ -27,10 +28,7 @@ export function SettingsPanel() {
         <div className={styles.header}>
           <h2 className={styles.title}>Настройки</h2>
           <button className={styles.closeButton} onClick={closeSettings} aria-label="Закрыть">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            <IconClose />
           </button>
         </div>
 

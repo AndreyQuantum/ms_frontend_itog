@@ -1,4 +1,5 @@
 import type { Message as MessageType } from '../../types';
+import { IconLogoLarge, IconArrowRight } from '../../assets/icons';
 import { Message } from './Message';
 import { TypingIndicator } from './TypingIndicator';
 import { useAutoScroll } from '../../hooks/useAutoScroll';
@@ -19,21 +20,13 @@ const SUGGESTIONS = [
 ];
 
 export function MessageList({ messages, isLoading, isStreaming, onSuggestionClick }: MessageListProps) {
-  const { containerRef, handleScroll } = useAutoScroll([messages, isStreaming]);
+  const { containerRef, handleScroll } = useAutoScroll([messages.length, isStreaming, messages]);
 
   if (messages.length === 0) {
     return (
       <div className={styles.emptyState}>
         <div className={styles.emptyIcon}>
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-              stroke="#8b5cf6"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <IconLogoLarge />
         </div>
         <h2 className={styles.emptyTitle}>Чем могу помочь?</h2>
         <p className={styles.emptySubtitle}>
@@ -47,9 +40,7 @@ export function MessageList({ messages, isLoading, isStreaming, onSuggestionClic
               onClick={() => onSuggestionClick?.(s)}
             >
               <span>{s}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              <IconArrowRight />
             </button>
           ))}
         </div>

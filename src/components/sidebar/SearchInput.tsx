@@ -1,3 +1,4 @@
+import { IconSearch } from '../../assets/icons';
 import styles from './sidebar.module.css';
 
 interface SearchInputProps {
@@ -8,18 +9,7 @@ interface SearchInputProps {
 export function SearchInput({ value, onChange }: SearchInputProps) {
   return (
     <div className={styles.searchWrapper}>
-      <svg
-        className={styles.searchIcon}
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.35-4.35" />
-      </svg>
+      <IconSearch className={styles.searchIcon} />
       <input
         type="text"
         placeholder="Поиск чатов…"
