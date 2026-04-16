@@ -29,6 +29,7 @@ export function useAutoScroll(deps: unknown[]) {
       });
       shouldAutoScroll.current = true;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   const scrollToBottom = useCallback(() => {
