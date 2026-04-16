@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useChatStore } from '../store/chatStore';
 import { useSettingsStore } from '../store/settingsStore';
 import { useStreaming } from './useStreaming';
-import type { Message } from '../types';
+import type { Message, MessageAttachment } from '../types';
 
 function generateId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
@@ -38,8 +38,8 @@ export function useChat() {
   const activeChat = chats.find((c) => c.id === activeChatId);
 
   const sendMessage = useCallback(
-    async (content: string) => {
-      if (!content.trim() || isStreaming || isLoading) return;
+    async (content: string, attachments?: MessageAttachment[]) => {
+      if ((!content.trim() && (!attachments || attachments.length === 0)) || isStreaming || isLoading) return;
 
       clearError();
 
@@ -53,13 +53,14 @@ export function useChat() {
         role: 'user',
         content: content.trim(),
         timestamp: Date.now(),
+        attachments,
       };
 
       addMessage(chatId, userMessage);
 
       const chat = useChatStore.getState().chats.find((c) => c.id === chatId);
       if (chat && chat.messages.length === 1 && chat.title === 'Новый чат') {
-        renameChat(chatId, generateTitle(content));
+        renameChat(chatId, content.trim() ? generateTitle(content) : 'Изображение');
       }
 
       setIsLoading(true);

@@ -51,10 +51,14 @@ export function useStreaming(): UseStreamingReturn {
           return;
         }
 
-        const message =
-          err instanceof GeminiApiError
-            ? err.message
-            : 'Произошла ошибка при получении ответа';
+        let message = 'Произошла ошибка при получении ответа';
+        if (err instanceof GeminiApiError) {
+          if (err.statusCode === 400 && (err.message.includes('API_KEY_INVALID') || err.message.includes('API key not valid'))) {
+            message = 'API ключ не валиден. Пожалуйста, замените его в настройках.';
+          } else {
+            message = err.message;
+          }
+        }
         onError(message);
       } finally {
         isStreamingRef.current = false;

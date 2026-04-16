@@ -11,6 +11,7 @@ describe('types', () => {
       topK: 40,
       maxTokens: 8192,
       systemPrompt: '',
+      apiKey: '',
     });
   });
 

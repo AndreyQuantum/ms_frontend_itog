@@ -17,3 +17,4 @@ export { default as IconArrowRight } from './arrow-right.svg?react';
 export { default as IconAlert } from './alert.svg?react';
 export { default as IconLogo } from './logo.svg?react';
 export { default as IconLogoLarge } from './logo-large.svg?react';
+export { default as IconImage } from './image.svg?react';

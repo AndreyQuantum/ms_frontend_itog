@@ -18,11 +18,7 @@ export default defineConfig(({ mode }) => {
         '/api/gemini': {
           target: 'https://generativelanguage.googleapis.com',
           changeOrigin: true,
-          rewrite: (path) => {
-            const rewritten = path.replace(/^\/api\/gemini/, '/v1beta')
-            const separator = rewritten.includes('?') ? '&' : '?'
-            return `${rewritten}${separator}key=${env.VITE_GEMINI_API_KEY}`
-          },
+          rewrite: (path) => path.replace(/^\/api\/gemini/, '/v1beta'),
         },
       },
     },

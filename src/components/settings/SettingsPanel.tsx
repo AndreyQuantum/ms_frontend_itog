@@ -34,6 +34,18 @@ export function SettingsPanel() {
 
         <div className={styles.body}>
           <div className={styles.section}>
+            <label className={styles.label} htmlFor="api-key">API Ключ</label>
+            <input
+              id="api-key"
+              type="password"
+              className={styles.input}
+              value={settings.apiKey || ''}
+              onChange={(e) => updateSettings({ apiKey: e.target.value })}
+              placeholder="AIza..."
+            />
+          </div>
+
+          <div className={styles.section}>
             <label className={styles.label} htmlFor="model-select">Модель</label>
             <select
               id="model-select"

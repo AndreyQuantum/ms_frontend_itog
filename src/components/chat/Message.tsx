@@ -25,6 +25,15 @@ export function Message({ message }: MessageProps) {
       <div className={styles.messageContent}>
         <div className={styles.messageRole}>{isUser ? 'Вы' : 'AI'}</div>
         <div className={styles.messageBody}>
+          {message.attachments && message.attachments.length > 0 && (
+            <div className={styles.messageAttachments}>
+              {message.attachments.map((att, index) => (
+                <div key={index} className={styles.messageAttachment}>
+                  <img src={att.data} alt="Attachment" className={styles.messageAttachmentImage} />
+                </div>
+              ))}
+            </div>
+          )}
           {isUser ? (
             <p className={styles.messageText}>{message.content}</p>
           ) : (
