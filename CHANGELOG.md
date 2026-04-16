@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/AndreyQuantum/ms_frontend_itog/compare/v1.1.0...v1.2.0) (2026-04-16)
+
+
+### Features
+
+* implement automatic sidebar visibility toggle based on viewport width in AppLayout ([facac86](https://github.com/AndreyQuantum/ms_frontend_itog/commit/facac86ce6138761fd5d82cddbeef8c30a179300))
+
 # [1.1.0](https://github.com/AndreyQuantum/ms_frontend_itog/compare/v1.0.0...v1.1.0) (2026-04-16)
 
 
