@@ -9,8 +9,12 @@
     "access": "public",
     "registry": "https://npm.pkg.github.com"
   },
+  "bin": {
+    "ms_frontend_itog": "./bin/cli.js"
+  },
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "type": "module",
   "scripts": {
@@ -28,6 +32,7 @@
     "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
+    "sirv-cli": "^3.0.0",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
