@@ -1,13 +1,17 @@
 {
-  "name": "ms_frontend_itog",
+  "name": "@AndreyQuantum/ms_frontend_itog",
   "version": "0.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AndreyQuantum/ms_frontend_itog.git"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
