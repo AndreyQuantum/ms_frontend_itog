@@ -1,6 +1,7 @@
 import type { Message, ModelSettings } from '../types';
 import type {
   GeminiContent,
+  GeminiPart,
   GeminiRequest,
   GeminiStreamChunk,
 } from './types';
@@ -14,10 +15,29 @@ function toGeminiRole(role: Message['role']): 'user' | 'model' {
 function buildContents(messages: Message[]): GeminiContent[] {
   return messages
     .filter((m) => m.role !== 'system')
-    .map((m) => ({
-      role: toGeminiRole(m.role),
-      parts: [{ text: m.content }],
-    }));
+    .map((m) => {
+      const parts: GeminiPart[] = [];
+
+      if (m.content) {
+        parts.push({ text: m.content });
+      }
+
+      if (m.attachments) {
+        m.attachments.forEach((att) => {
+          parts.push({
+            inline_data: {
+              mime_type: att.type,
+              data: att.data.split(',')[1] || att.data, // Remove data:image/png;base64, prefix if present
+            },
+          });
+        });
+      }
+
+      return {
+        role: toGeminiRole(m.role),
+        parts,
+      };
+    });
 }
 
 export function buildRequest(messages: Message[], settings: ModelSettings): GeminiRequest {

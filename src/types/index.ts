@@ -1,8 +1,14 @@
+export interface MessageAttachment {
+  type: string;
+  data: string; // base64
+}
+
 export interface Message {
   id: string;
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: number;
+  attachments?: MessageAttachment[];
 }
 
 export interface Chat {
