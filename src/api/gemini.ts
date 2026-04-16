@@ -79,9 +79,17 @@ export async function* streamMessage(
   const url = `${BASE_URL}/models/${settings.model}:streamGenerateContent?alt=sse`;
   const body = buildRequest(messages, settings);
 
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+
+  if (settings.apiKey) {
+    headers['x-goog-api-key'] = settings.apiKey;
+  }
+
   const response = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers,
     body: JSON.stringify(body),
     signal,
   });
@@ -153,9 +161,17 @@ export async function sendMessage(
   const url = `${BASE_URL}/models/${settings.model}:generateContent`;
   const body = buildRequest(messages, settings);
 
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+
+  if (settings.apiKey) {
+    headers['x-goog-api-key'] = settings.apiKey;
+  }
+
   const response = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers,
     body: JSON.stringify(body),
     signal,
   });

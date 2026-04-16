@@ -19,6 +19,12 @@ describe('settingsStore', () => {
     expect(settings.topK).toBe(40);
     expect(settings.maxTokens).toBe(8192);
     expect(settings.systemPrompt).toBe('');
+    expect(settings.apiKey).toBe('');
+  });
+
+  it('updates apiKey', () => {
+    useSettingsStore.getState().updateSettings({ apiKey: 'new-key' });
+    expect(useSettingsStore.getState().settings.apiKey).toBe('new-key');
   });
 
   it('updates partial settings', () => {

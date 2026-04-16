@@ -26,6 +26,7 @@ export interface ModelSettings {
   topK: number;
   maxTokens: number;
   systemPrompt: string;
+  apiKey?: string;
 }
 
 export const DEFAULT_SETTINGS: ModelSettings = {
@@ -35,6 +36,7 @@ export const DEFAULT_SETTINGS: ModelSettings = {
   topK: 40,
   maxTokens: 8192,
   systemPrompt: '',
+  apiKey: '',
 };
 
 export const AVAILABLE_MODELS = [
