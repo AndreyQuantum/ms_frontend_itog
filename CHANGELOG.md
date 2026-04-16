@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/AndreyQuantum/ms_frontend_itog/compare/v1.0.0...v1.1.0) (2026-04-16)
+
+
+### Features
+
+* add CLI entry point to serve the production build using sirv-cli ([910ce2f](https://github.com/AndreyQuantum/ms_frontend_itog/commit/910ce2fbdfc7cd6e29653495bc11452d395345ec))
+
 # 1.0.0 (2026-04-16)
 
 
