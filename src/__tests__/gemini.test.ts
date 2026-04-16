@@ -90,4 +90,60 @@ describe('buildRequest', () => {
     const body = buildRequest(withSystem, DEFAULT_SETTINGS);
     expect(body.contents).toHaveLength(3);
   });
+
+  it('handles messages with image attachments', () => {
+    const messagesWithImages: Message[] = [
+      {
+        id: 'img-1',
+        role: 'user',
+        content: 'Explain this image',
+        timestamp: Date.now(),
+        attachments: [
+          {
+            type: 'image/png',
+            data: 'data:image/png;base64,abcdef',
+          },
+        ],
+      },
+    ];
+
+    const body = buildRequest(messagesWithImages, DEFAULT_SETTINGS);
+
+    expect(body.contents[0].parts).toHaveLength(2);
+    expect(body.contents[0].parts[0]).toEqual({ text: 'Explain this image' });
+    expect(body.contents[0].parts[1]).toEqual({
+      inline_data: {
+        mime_type: 'image/png',
+        data: 'abcdef',
+      },
+    });
+  });
+
+  it('handles messages with multiple image attachments and no text', () => {
+    const messagesWithImages: Message[] = [
+      {
+        id: 'img-2',
+        role: 'user',
+        content: '',
+        timestamp: Date.now(),
+        attachments: [
+          { type: 'image/jpeg', data: 'data:image/jpeg;base64,123' },
+          { type: 'image/png', data: '456' },
+        ],
+      },
+    ];
+
+    const body = buildRequest(messagesWithImages, DEFAULT_SETTINGS);
+
+    expect(body.contents[0].parts).toHaveLength(2);
+    expect(body.contents[0].parts[0].inline_data).toEqual({
+      mime_type: 'image/jpeg',
+      data: '123',
+    });
+    expect(body.contents[0].parts[1].inline_data).toEqual({
+      mime_type: 'image/png',
+      data: '456',
+    });
+    expect(body.contents[0].parts.find(p => p.text)).toBeUndefined();
+  });
 });

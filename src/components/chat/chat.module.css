@@ -454,22 +454,23 @@
 /* Image Upload & Preview */
 .attachButton {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
   color: var(--color-text-secondary);
   transition: all var(--transition-fast);
+  margin-bottom: 2px;
 }
 .attachButton:hover:not(:disabled) {
   background: var(--color-bg-hover);
   color: var(--color-text-primary);
 }
-.attachButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.attachButton svg {
+  width: 20px;
+  height: 20px;
 }
 
 .attachmentPreview {
